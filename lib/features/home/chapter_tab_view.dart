@@ -1,18 +1,25 @@
+import 'package:bavitha_tech_assignment/features/home/home_controller.dart';
 import 'package:bavitha_tech_assignment/utils/common_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../utils/colors.dart';
+import 'home_model.dart';
 class ChapterTabView extends StatelessWidget {
   const ChapterTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    HomeController controller = Get.find();
+
     return   Padding(
       padding:  const EdgeInsets.symmetric(horizontal: 10), // Adjust top padding
       child: ListView.builder(
-        itemCount: 10, // Number of items in the list
+        itemCount: (controller.homeData?.rootSourcePath??[]).length, // Number of items in the list
         itemBuilder: (BuildContext context, int index) {
+          RootSourcePath data = controller.homeData!.rootSourcePath[index];
           return Container(
             margin: EdgeInsets.only(top: 10),
             child: Row(
@@ -22,7 +29,7 @@ class ChapterTabView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      getBoldText('Chapter 1',fontSize: 16),
+                      getBoldText(data.chapterName,fontSize: 16),
                       const ReadMoreText(
                         'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
                         trimLength: 110,

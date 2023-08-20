@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class HomeController extends GetxController with GetSingleTickerProviderStateMixin{
   TabController? tabController;
-  HomeModel? homeModel;
-  var isLoading = false;
+  Data? homeData;
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -14,6 +14,9 @@ class HomeController extends GetxController with GetSingleTickerProviderStateMix
     getBookDetails();
   }
   getBookDetails() async {
-     homeModel = await RemoteService().getBookDetails();
+     isLoading(true);
+    HomeModel? homeModel = await RemoteService().getBookDetails();
+     homeData = homeModel?.data;
+     isLoading(false);
   }
 }
