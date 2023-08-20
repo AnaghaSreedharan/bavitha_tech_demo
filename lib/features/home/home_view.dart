@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
     HomeController controller = Get.put(HomeController());
 
     return Scaffold(
-      body: Obx(() => controller.isLoading.value?Center(child: CircularProgressIndicator()): controller.homeData!=null?SingleChildScrollView(
+      body: Obx(() => controller.isLoading.value?const Center(child: CircularProgressIndicator()): controller.homeData!=null?SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -78,7 +78,7 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: Get.height * .6,
                   child: Column(
                     children: [
@@ -146,7 +146,7 @@ class HomeView extends StatelessWidget {
                                     trimMode: TrimMode.Line,
                                     trimCollapsedText: 'See more',
                                     trimExpandedText: 'See less',
-                                    moreStyle: TextStyle(
+                                    moreStyle: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -169,7 +169,7 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: Get.width,
                   width: Get.height,
                   child: Center(
@@ -272,7 +272,7 @@ class HomeView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Padding(padding: EdgeInsets.all(10),
+            Padding(padding: const EdgeInsets.all(10),
               child: TabBar(
                 unselectedLabelColor: primaryColor,
                 indicator: BoxDecoration(
@@ -287,27 +287,30 @@ class HomeView extends StatelessWidget {
                 labelColor: Colors.white,
                 indicatorSize: TabBarIndicatorSize.tab, // Use the 'tab' size
                 labelStyle: const TextStyle(fontSize: 14),
-                tabs:  [
-                  Container(
+                tabs:  const [
+                  SizedBox(
                     height :30,
                     child: Tab(
                       text: 'Chapters',
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height :30,
                     child: Tab(
                       text: 'Reviews',
                     ),
                   ),
-                  Tab(
-                    text: 'Details',
+                  SizedBox(
+                    height: 30,
+                    child: Tab(
+                      text: 'Details',
+                    ),
                   ),
                 ],
                 controller: controller.tabController,
               ),),
-            Container(
-                height: 500,
+            SizedBox(
+                height: Get.height*.75,
                 child: TabBarView(
                   controller: controller.tabController,
                   children: const [

@@ -17,11 +17,12 @@ class ChapterTabView extends StatelessWidget {
     return   Padding(
       padding:  const EdgeInsets.symmetric(horizontal: 10), // Adjust top padding
       child: ListView.builder(
-        itemCount: (controller.homeData?.rootSourcePath??[]).length, // Number of items in the list
+        itemCount: (controller.homeData?.rootSourcePath??[]).length,
+        padding: const EdgeInsets.all(0),// Number of items in the list
         itemBuilder: (BuildContext context, int index) {
           RootSourcePath data = controller.homeData!.rootSourcePath[index];
           return Container(
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             child: Row(
               children: [
                 Expanded(
@@ -45,7 +46,7 @@ class ChapterTabView extends StatelessWidget {
                       Row(
                         children: [
                           getRegulaText('Played',fontSize: 12,textColor: Colors.grey.shade500),
-                          Icon(Icons.check_circle_rounded,color: primaryColor,size: 12,)
+                          const Icon(Icons.check_circle_rounded,color: primaryColor,size: 12,)
                         ],
                       )
                     ],
@@ -54,12 +55,12 @@ class ChapterTabView extends StatelessWidget {
                 Container(
                     height: 40,
                     width: 40,
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.all(Radius.circular(5))
+                      borderRadius: const BorderRadius.all(Radius.circular(5))
                     ),
-                    child: Icon(Icons.play_arrow,color: blueColor,size: 30,))
+                    child: const Icon(Icons.play_arrow,color: blueColor,size: 30,))
 
                 
               ],
